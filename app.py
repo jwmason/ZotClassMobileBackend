@@ -69,4 +69,5 @@ def get_parameters():
     string2 = "https://api.peterportal.org/rest/v0/schedule/soc?" + string1
     response2 = requests.get(string2)
     print(string2)
-    return response2.json()
+    data = dict(response2.json())
+    return data
