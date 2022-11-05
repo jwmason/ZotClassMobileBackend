@@ -16,6 +16,16 @@ def all_departments():
     json_data = json.dumps(dep_dict)
     return json_data
 
+@app.route("/terms")
+
+def all_terms():
+    year_list = []
+    quarter = ["Fall", "Winter", "Spring"]
+    for i in range(2014,2023):
+        for j in range(3):
+            year_list.append(str(i) + " " + quarter[j])
+    json_data = json.dumps(year_list)
+    return json_data
 @app.route("/parameters")
 # http://127.0.0.1:5000/parameters?term=2022Fall&department=ICS&sectionCodes=12345&courseTitle=31A
 
