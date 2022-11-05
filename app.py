@@ -20,10 +20,14 @@ def all_departments():
 
 def all_terms():
     year_list = []
-    quarter = ["Fall", "Winter", "Spring"]
+    quarter = ["Spring", "Winter", "Fall"]
     for i in range(2014,2023):
         for j in range(3):
-            year_list.append(str(i) + " " + quarter[j])
+            if j is 0 or j is 1:
+                year_list.append(str(i + 1) + " " + quarter[j])
+            else:
+                year_list.append(str(i) + " " + quarter[j])
+    year_list.reverse()
     json_data = json.dumps(year_list)
     return json_data
 @app.route("/parameters")
