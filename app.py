@@ -3,7 +3,7 @@ from flask import request
 import requests
 import json
 app = Flask(__name__)
-@app.route("/")
+@app.route("/departments")
 
 def all_departments():
     response1 = requests.get("https://api.peterportal.org/rest/v0/courses/all")
@@ -12,23 +12,37 @@ def all_departments():
     for i in resp_json:
         x = i["department"]
         set1.add(x)
-    print(set1)
-    return "hello"
+    dep_dict = {'json_list': list(set1)}
+    json_data = json.dumps(dep_dict)
+    return json_data
 
-'''def get_parameters():
-    # user_parameters = input()
+@app.route("/parameters")
+# http://127.0.0.1:5000/parameters?term=2022Fall&department=ICS&sectionCodes=12345&courseTitle=31A
+
+def get_parameters():
     term = request.args.get('term')
     department = request.args.get('department')
-    section_code = request.args.get('section_code')
-    course_title = request.args.get('course_title')
+    section_code = request.args.get('sectionCodes')
+    course_title = request.args.get('courseTitle')
     search_parameters = {'Term': term, 'Department': department, 'Section Code': section_code, 'Course Title': course_title}
-    if term == "None":
+    if term != "None":
+        term_get = "term=" + str(term)
+    else:
         term_get = ""
-    if department == "None":
+    if department != "None":
+        department_get = "department=" + str(department)
+    else:
         department_get = ""
-    if section_code == "None":
+    if section_code != "None":
+        section_code_get = "sectionCodes=" + str(section_code)
+    else:
         section_code_get = ""
-    if course_title == "None":
+    if course_title != "None":
+        course_title_get = "courseTitle=" + str(course_title)
+    else:
         course_title_get = ""
-    response = requests.get("https://api.peterportal.org/rest/v0/schedule/soc?term=2018%20Fall&department=COMPSCI&courseNumber=161")
-    return response.json()'''
+    string1 = term_get + " " + department_get + " " + section_code_get + " " + course_title_get
+    string2 = string1.replace(" ", "&")
+    print(string2)
+    response2 = requests.get("https://api.peterportal.org/rest/v0/schedule/soc?" + string2)
+    return response2.json()
