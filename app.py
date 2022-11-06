@@ -29,7 +29,7 @@ def all_terms():
     quarter = ["Spring", "Winter", "Fall"]
     for i in range(2014,2023):
         for j in range(3):
-            if j is 0 or j is 1:
+            if j == 0 or j == 1:
                 year_list.append(str(i + 1) + " " + quarter[j])
             else:
                 year_list.append(str(i) + " " + quarter[j])
