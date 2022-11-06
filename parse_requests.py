@@ -26,4 +26,4 @@ def dict(dict1):
             list1.append(section_dict)
         dict2 = {'courseTitle': var_title, 'sections': list1, 'meetings': list3}
         main_list.append(dict2)
-    print(main_list)
+    return main_list

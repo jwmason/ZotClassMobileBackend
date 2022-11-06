@@ -71,3 +71,5 @@ def get_parameters():
     print(string2)
     data = dict(response2.json())
     return data
+if __name__ == "__main__":
+    app.run(host = '0.0.0.0')
