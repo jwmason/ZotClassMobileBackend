@@ -1,4 +1,4 @@
-# ZotClassMobile: Frontend
+# ZotClassMobile: Backend
 
 ## TLDR:
 
@@ -23,22 +23,25 @@ We got our inspiration from ZotCourse, which is a popular class scheduler for st
 
 ## How We Built It
 
-- **Flutter**: We implemented the front end using Flutter. First, we divided the user interface of the two screens by having one page focus on the search inputs and the and dropdown menus, and then the other page focusing on displaying the searched courses through a scrollable list view. After creating the basic functionality for the front end, we implemented the back end using get requests to filter data from the back end API and display it properly.
+- **PeterPortal API**: We started off communicating with the frontend on what we wanted to build, and we decided on making a mobile app that used information from the PeterPortal API. We created our own API based on information from PeterPortal.
 
-- **Design**: After getting most of the functionality and displaying the correct data within the given amount of time, we did our best to work on UX/UI design.
+- **Flask**: The backend started out with a flask and we used it as a framework to make API routes. We assigned these API routes to certain functions that accessed certain structures of information. Based on what the frontend imputed to us, we would find what information fit the requirements for that input and return all the information associated with it.
+
+- **Efficient Filtering**: After we were able to organize the information based on certain requirements, we then had to sort the information we wanted from the information we didn’t want. We utilized for loops to access nested structures in order to find the information inside each object and we returned what we found back inside the function we used to send to the front end.
+
+- **Public Deployment**: We also utilized gunicorn and git to deploy the code on Heroku so that our code was accessible outside our single laptop.
 
 ## Accomplishments
 
-1. **Integration**: Successfully linking the frontend UI to the json objects from the backend to create a comprehensive UCI course information app.
+1. **Public Deployment**: Being able to deploy the code onto a public onto Heroku. It was my first step into making the project available and accessible to the public and not just on my local device.
 
 ## What We Learned
 
-- Flutter.
-- The importance of a user-centered approach espeically using an API with lots of information.
+- Access data from a public API.
+- Using Flask to build API routes.
 
 ## What's Next for ZotClassMobile
 
-1. **Search Terms**: In the front end, we want to include features that allow users to search classes by their individual course code and course name. We also want to implement more information about each class that shows where the class is located, how many students are enrolled, and whether the class is open or waitlisted.
-2. **Improved UI**: We want to improve the user interface so the app looks and feels more appealing and smooth to the user.
+1. **Search Terms**: For the backend, we want to be able to implement more search terms that the user is able to include to further narrow their search. Due to the lack of time, we were forced to determine for ourselves the most important search terms for classes and did the best we could. If we had more search items in our database, we better utilize nested structures and ultimately a more effective and efficient search process for the user.
    
 ZotClassMobile stands as a testament to technological innovation in UCI collegiate support, emphasizing the need for ease-of-access and understanding in digital solutions.
